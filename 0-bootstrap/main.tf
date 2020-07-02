@@ -52,6 +52,20 @@ module "seed_bootstrap" {
   group_billing_admins    = var.group_billing_admins
   default_region          = var.default_region
   sa_enable_impersonation = true
+  activate_apis = [
+    "serviceusage.googleapis.com",
+    "servicenetworking.googleapis.com",
+    "compute.googleapis.com",
+    "logging.googleapis.com",
+    "bigquery.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "cloudbilling.googleapis.com",
+    "iam.googleapis.com",
+    "admin.googleapis.com",
+    "appengine.googleapis.com",
+    "storage-api.googleapis.com",
+    "monitoring.googleapis.com"
+  ]
 }
 
 module "cloudbuild_bootstrap" {
@@ -66,4 +80,18 @@ module "cloudbuild_bootstrap" {
   terraform_sa_name       = module.seed_bootstrap.terraform_sa_name
   terraform_state_bucket  = module.seed_bootstrap.gcs_bucket_tfstate
   sa_enable_impersonation = true
+  activate_apis = [
+    "serviceusage.googleapis.com",
+    "servicenetworking.googleapis.com",
+    "compute.googleapis.com",
+    "logging.googleapis.com",
+    "bigquery.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "cloudbilling.googleapis.com",
+    "iam.googleapis.com",
+    "admin.googleapis.com",
+    "appengine.googleapis.com",
+    "storage-api.googleapis.com",
+    "cloudbuild.googleapis.com"
+  ]
 }
