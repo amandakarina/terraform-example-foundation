@@ -14,16 +14,9 @@
  * limitations under the License.
  */
 
-output "id" {
-  value = google_compute_organization_security_policy.policy.id
-}
-
-output "project_id" {
-  description = "Project where compute instance was created"
-  value       = module.base_shared_gce_instance.project_id
-}
-
-output "region" {
-  description = "Region where compute instance was created"
-  value       = module.base_shared_gce_instance.region
+terraform {
+  backend "gcs" {
+    bucket = "UPDATE_ME"
+    prefix = "terraform/app-infra/business_unit_1/non-production"
+  }
 }
