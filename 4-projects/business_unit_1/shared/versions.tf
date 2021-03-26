@@ -14,16 +14,21 @@
  * limitations under the License.
  */
 
-terraform {
-  required_version = ">= 0.13"
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = ">= 3.50"
-    }
-    google-beta = {
-      source  = "hashicorp/google-beta"
-      version = ">= 3.50"
-    }
-  }
+
+
+data "google_active_folder" "env" {
+  display_name = "${var.folder_prefix}-production"
+  parent       = var.parent_folder != "" ? "folders/${var.parent_folder}" : "organizations/${var.org_id}"
+}
+
+module "base_shared_gce_instance" {
+  source         = "../../modules/env_base"
+  environment    = "production"
+  vpc_type       = "base"
+  num_instances  = var.num_instances
+  folder_id      = data.google_active_folder.env.name
+  business_code  = "bu1"
+  project_suffix = "sample-base"
+  region         = "us-east1"
+  static_ips     = var.static_ips
 }
