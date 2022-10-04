@@ -55,7 +55,7 @@ resource "google_dns_policy" "default_policy" {
 *****************************************/
 module "peering_zone" {
   source      = "terraform-google-modules/cloud-dns/google"
-  version     = "~> 3.1"
+  version     = "~> 4.1"
   project_id  = var.project_id
   type        = "peering"
   name        = "dz-${var.environment_code}-shared-base-to-dns-hub"
