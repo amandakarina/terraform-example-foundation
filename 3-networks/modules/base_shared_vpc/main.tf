@@ -124,7 +124,7 @@ resource "google_service_networking_connection" "private_vpc_connection" {
 
 module "region1_router1" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 2.0.0"
+  version = "~> 4.0.0"
   count   = var.mode != "spoke" ? 1 : 0
   name    = "cr-${local.vpc_name}-${var.default_region1}-cr1"
   project = var.project_id
@@ -139,7 +139,7 @@ module "region1_router1" {
 
 module "region1_router2" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.4.0"
+  version = "~> 4.0.0"
   count   = var.mode != "spoke" ? 1 : 0
   name    = "cr-${local.vpc_name}-${var.default_region1}-cr2"
   project = var.project_id
@@ -154,7 +154,7 @@ module "region1_router2" {
 
 module "region2_router1" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.4.0"
+  version = "~> 4.0.0"
   count   = var.mode != "spoke" ? 1 : 0
   name    = "cr-${local.vpc_name}-${var.default_region2}-cr3"
   project = var.project_id
@@ -169,7 +169,7 @@ module "region2_router1" {
 
 module "region2_router2" {
   source  = "terraform-google-modules/cloud-router/google"
-  version = "~> 0.4.0"
+  version = "~> 4.0.0"
   count   = var.mode != "spoke" ? 1 : 0
   name    = "cr-${local.vpc_name}-${var.default_region2}-cr4"
   project = var.project_id
