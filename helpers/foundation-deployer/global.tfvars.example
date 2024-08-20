@@ -28,6 +28,13 @@ foundation_code_path = "FULL_PATH_TO_FOLDER_WHERE_THE_EXAMPLE_FOUNDATION_CODE_WA
 validator_project_id = "EXISTING_PROJECT_ID"
 
 
+// How Foundation is going to be deployed
+// Supported types: LocalDeployment and SourceRepoWithCloudBuild
+// SourceRepoWithCloudBuild: Code is managed at Source Repository and terraform code is deployed using Cloud Build.
+// LocalDeployment: Code is managed locally and deployed using local terraform.
+deployment_type = "LocalDeployment"
+
+
 // 0-bootstrap inputs
 // https://github.com/terraform-google-modules/terraform-example-foundation/blob/master/0-bootstrap/README.md#inputs
 

@@ -101,6 +101,7 @@ func main() {
 		EnableHubAndSpoke: globalTFVars.EnableHubAndSpoke,
 		DisablePrompt:     cfg.disablePrompt,
 		Logger:            utils.GetLogger(cfg.quiet),
+		DeploymentType:    globalTFVars.DeploymentType,
 	}
 
 	// only enable services if they are not already enabled

@@ -28,20 +28,22 @@ import (
 )
 
 const (
-	PoliciesRepo     = "gcp-policies"
-	BootstrapRepo    = "gcp-bootstrap"
-	OrgRepo          = "gcp-org"
-	EnvironmentsRepo = "gcp-environments"
-	NetworksRepo     = "gcp-networks"
-	ProjectsRepo     = "gcp-projects"
-	AppInfraRepo     = "bu1-example-app"
-	BootstrapStep    = "0-bootstrap"
-	OrgStep          = "1-org"
-	EnvironmentsStep = "2-environments"
-	HubAndSpokeStep  = "3-networks-hub-and-spoke"
-	DualSvpcStep     = "3-networks-dual-svpc"
-	ProjectsStep     = "4-projects"
-	AppInfraStep     = "5-app-infra"
+	PoliciesRepo             = "gcp-policies"
+	BootstrapRepo            = "gcp-bootstrap"
+	OrgRepo                  = "gcp-org"
+	EnvironmentsRepo         = "gcp-environments"
+	NetworksRepo             = "gcp-networks"
+	ProjectsRepo             = "gcp-projects"
+	AppInfraRepo             = "bu1-example-app"
+	BootstrapStep            = "0-bootstrap"
+	OrgStep                  = "1-org"
+	EnvironmentsStep         = "2-environments"
+	HubAndSpokeStep          = "3-networks-hub-and-spoke"
+	DualSvpcStep             = "3-networks-dual-svpc"
+	ProjectsStep             = "4-projects"
+	AppInfraStep             = "5-app-infra"
+	LocalDeployment          = "LocalDeployment"
+	SourceRepoWithCloudBuild = "SourceRepoWithCloudBuild"
 )
 
 type CommonConf struct {
@@ -52,6 +54,7 @@ type CommonConf struct {
 	EnableHubAndSpoke bool
 	DisablePrompt     bool
 	Logger            *logger.Logger
+	DeploymentType    string
 }
 
 type StageConf struct {
@@ -159,6 +162,7 @@ type GlobalTFVars struct {
 	ValidatorProjectId                    *string         `hcl:"validator_project_id"`
 	Groups                                Groups          `hcl:"groups"`
 	InitialGroupConfig                    *string         `hcl:"initial_group_config"`
+	DeploymentType                        string          `hcl:"deployment_type"`
 }
 
 // HasValidatorProj checks if a Validator Project was provided
